@@ -2,6 +2,7 @@ package main
 
 import (
 	"./emojis"
+	"./poll"
 	"flag"
 	"fmt"
 	"os"
@@ -27,6 +28,7 @@ func main() {
 	}
 
 	dg.AddHandler(emojis.Emojis)
+	dg.AddHandler(poll.Poll)
 
 	err = dg.Open()
 	// Catch the opening error
