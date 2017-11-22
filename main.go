@@ -1,12 +1,12 @@
 package main
 
 import (
+	"./emojis"
 	"flag"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
-
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -26,6 +26,8 @@ func main() {
 		return
 	}
 
+	dg.AddHandler(emojis.Emojis)
+
 	err = dg.Open()
 	// Catch the opening error
 	if err != nil {
@@ -33,7 +35,7 @@ func main() {
 		return
 	}
 
-	fmt.Println("Selfrobot in running. CTRL + C for exit.")
+	fmt.Println("Selfrobot is running. CTRL + C for exit.")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 	<-sc
