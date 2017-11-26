@@ -19,6 +19,12 @@ func Emojis(s *discordgo.Session, m *discordgo.MessageCreate) {
 		"careless": "◔_◔",
 	}
 
+	thinking := "thinking360"
+	if strings.Contains(m.Content, thinking) {
+		message := strings.Replace(m.Content, thinking, "http://s.gc.gy/thinking360.webp", -1)
+		s.ChannelMessageEdit(m.ChannelID, m.ID, message)
+	}
+
 	for command, emoji := range emojis {
 		if strings.Contains(m.Content, command) {
 			message := strings.Replace(m.Content, command, "`" + emoji + "`", -1)
