@@ -9,6 +9,7 @@ import (
 	"os/signal"
 	"syscall"
 	"github.com/bwmarrin/discordgo"
+	"log"
 )
 
 var Token string
@@ -23,7 +24,7 @@ func main() {
 
 	// Catch the error
 	if err != nil {
-		fmt.Println("Error while creating discord session, ", err)
+		log.Fatal("Error while creating discord session, ", err)
 		return
 	}
 
@@ -33,7 +34,7 @@ func main() {
 	err = dg.Open()
 	// Catch the opening error
 	if err != nil {
-		fmt.Println("Error while opening connection, ", err)
+		log.Fatal("Error while opening connection, ", err)
 		return
 	}
 
